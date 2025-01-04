@@ -1,6 +1,6 @@
 import random
 
-from orca.debug import printMessage
+
 
 print("START GAME #1")
 
@@ -12,18 +12,18 @@ card = random.randrange(1,13)
 cards = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"]
 #           0    1    2    3    4    5    6   7     8    9     10       11        12
 
-playerpoints = 0
+players_hand = 0
 
 print("Your card is a", cards[card-1], "!")
 
 
 # Add card to the player's points
 if card > 10:
-    playerpoints += 10
+    players_hand += 10
 else:
-    playerpoints += card
+    players_hand += card
 
-print("Your hand is:", playerpoints)
+print("Your hand is:", players_hand)
 
 game = True
 
@@ -42,12 +42,17 @@ while game:
     if prompt == "1":
         card = random.randrange(1, 13)
         if card > 10:
-            playerpoints += 10
+            players_hand += 10
         else:
-            playerpoints += card
+            players_hand += card
 
         print("Your card is a", cards[card - 1], "!")
-        print("Your hand is:", playerpoints)
+        print("Your hand is:", players_hand)
+
+        if players_hand > 21:
+            print("You exceeded 21! You lose.")
+        if players_hand == 21:
+            print ("BLACKJACK! You win!")
 
         if playerpoints > 21:
             print("You exceeded 21! You lose.")
@@ -55,7 +60,16 @@ while game:
             print ("BLACKJACK! You win!")
 
     elif prompt == "2":
-        pass
+        dealers_hand = random.randrange(16, 26)
+
+        if dealers_hand > 21:
+            print("You win!")
+        elif dealers_hand == players_hand:
+            print("It's a tie! No one wins!")
+        elif players_hand > dealers_hand:
+            print("Dealer wins!")
+        else:
+            print("You win!")
 
     elif prompt == "3":
         pass
