@@ -49,6 +49,11 @@ while game:
         print("Your card is a", cards[card - 1], "!")
         print("Your hand is:", playerpoints)
 
+        if playerpoints > 21:
+            print("You exceeded 21! You lose.")
+        if playerpoints == 21:
+            print ("BLACKJACK! You win!")
+
     elif prompt == "2":
         pass
 
@@ -61,3 +66,7 @@ while game:
     else:
         print("Invalid input!")
         print("Please enter an integer value between 1 and 4.")
+
+
+
+
