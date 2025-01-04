@@ -4,29 +4,26 @@ Fun Blanchard game of BlackJack, gator edition
 
 import random
 
-print("START GAME #1")
+GAME = True
+CARDS = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"]
+game_number = 1
+players_hand = 0
+
+print(f"START GAME #{game_number}")
 print("")
 
 card = random.randrange(1,13)
 
-cards = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"]
-
-PLAYERS_HAND = 0
-
-print(f"Your card is a {cards[card-1]}!")
+print(f"Your card is a {CARDS[card - 1]}!")
 
 
 # Add card to the player's points
 if card > 10:
-    PLAYERS_HAND += 10
+    players_hand += 10
 else:
-    PLAYERS_HAND += card
+    players_hand += card
 
-print("Your hand is:", PLAYERS_HAND)
-
-GAME = True
-
-
+print("Your hand is:", players_hand)
 
 while GAME:
 
@@ -41,16 +38,16 @@ while GAME:
     if prompt == "1":
         card = random.randrange(1, 13)
         if card > 10:
-            PLAYERS_HAND += 10
+            players_hand += 10
         else:
-            PLAYERS_HAND += card
+            players_hand += card
 
-        print(f"Your card is a {cards[card-1]}!")
-        print("Your hand is:", PLAYERS_HAND)
+        print(f"Your card is a {CARDS[card - 1]}!")
+        print("Your hand is:", players_hand)
 
-        if PLAYERS_HAND > 21:
+        if players_hand > 21:
             print("You exceeded 21! You lose.")
-        if PLAYERS_HAND == 21:
+        if players_hand == 21:
             print ("BLACKJACK! You win!")
 
     elif prompt == "2":
@@ -58,9 +55,9 @@ while GAME:
 
         if dealers_hand > 21:
             print("You win!")
-        elif dealers_hand == PLAYERS_HAND:
+        elif dealers_hand == players_hand:
             print("It's a tie! No one wins!")
-        elif PLAYERS_HAND > dealers_hand:
+        elif players_hand > dealers_hand:
             print("Dealer wins!")
         else:
             print("You win!")
