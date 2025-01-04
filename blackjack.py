@@ -1,3 +1,7 @@
+"""
+Fun Blanchard game of BlackJack, gator edition
+"""
+
 import random
 
 
@@ -12,24 +16,24 @@ card = random.randrange(1,13)
 cards = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"]
 #           0    1    2    3    4    5    6   7     8    9     10       11        12
 
-players_hand = 0
+PLAYERS_HAND = 0
 
 print("Your card is a", cards[card-1], "!")
 
 
 # Add card to the player's points
 if card > 10:
-    players_hand += 10
+    PLAYERS_HAND += 10
 else:
-    players_hand += card
+    PLAYERS_HAND += card
 
-print("Your hand is:", players_hand)
+print("Your hand is:", PLAYERS_HAND)
 
-game = True
+GAME = True
 
 
 
-while game:
+while GAME:
 
     print("")
     print("1. Get another card")
@@ -42,12 +46,12 @@ while game:
     if prompt == "1":
         card = random.randrange(1, 13)
         if card > 10:
-            players_hand += 10
+            PLAYERS_HAND += 10
         else:
-            players_hand += card
+            PLAYERS_HAND += card
 
-        print("Your card is a", cards[card - 1], "!")
-        print("Your hand is:", players_hand)
+        print(f"Your card is a {cards[card-1]}!")
+        print("Your hand is:", PLAYERS_HAND)
 
         if players_hand > 21:
             print("You exceeded 21! You lose.")
@@ -56,7 +60,7 @@ while game:
 
         if playerpoints > 21:
             print("You exceeded 21! You lose.")
-        if playerpoints == 21:
+        if PLAYERS_HAND == 21:
             print ("BLACKJACK! You win!")
 
     elif prompt == "2":
@@ -64,9 +68,9 @@ while game:
 
         if dealers_hand > 21:
             print("You win!")
-        elif dealers_hand == players_hand:
+        elif dealers_hand == PLAYERS_HAND:
             print("It's a tie! No one wins!")
-        elif players_hand > dealers_hand:
+        elif PLAYERS_HAND > dealers_hand:
             print("Dealer wins!")
         else:
             print("You win!")
@@ -75,12 +79,8 @@ while game:
         pass
 
     elif prompt == "4":
-        game = False
+        GAME = False
 
     else:
         print("Invalid input!")
         print("Please enter an integer value between 1 and 4.")
-
-
-
-
