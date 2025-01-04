@@ -4,21 +4,16 @@ Fun Blanchard game of BlackJack, gator edition
 
 import random
 
-
-
 print("START GAME #1")
-
+print("")
 
 card = random.randrange(1,13)
 
-#print(card)
-
 cards = ["ACE", "2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING"]
-#           0    1    2    3    4    5    6   7     8    9     10       11        12
 
 PLAYERS_HAND = 0
 
-print("Your card is a", cards[card-1], "!")
+print(f"Your card is a {cards[card-1]}!")
 
 
 # Add card to the player's points
@@ -53,12 +48,7 @@ while GAME:
         print(f"Your card is a {cards[card-1]}!")
         print("Your hand is:", PLAYERS_HAND)
 
-        if players_hand > 21:
-            print("You exceeded 21! You lose.")
-        if players_hand == 21:
-            print ("BLACKJACK! You win!")
-
-        if playerpoints > 21:
+        if PLAYERS_HAND > 21:
             print("You exceeded 21! You lose.")
         if PLAYERS_HAND == 21:
             print ("BLACKJACK! You win!")
